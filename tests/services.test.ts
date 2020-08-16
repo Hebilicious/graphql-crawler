@@ -2,6 +2,16 @@
 import { crawlPage } from "../src/services/webCrawl"
 import * as handleCrawl from "../src/services/handleCrawl"
 
+/**
+ * Services Tests
+ *
+ * We have some units tests for our actual services here.
+ * We leverage jest mocks and spies to make sure everything
+ * is working perfectly. While our graphQL tests are closer
+ * to how our application works, this gives us good coverage
+ * and strong confidence when we need to refactor or
+ * pinpoint a problem.
+ */
 describe("Crawler Tests", () => {
     test("Can crawl a single page", async () => {
         const links = await crawlPage({ url: "https://emmanuel.style" }) //My personal website has 3 external links atm.

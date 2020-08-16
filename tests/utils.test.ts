@@ -1,5 +1,9 @@
 import { isUrl, makeXMLSitemapString } from "../src/utils/helpers"
 
+/**
+ * Utils unit tests.
+ * We can test our helpers here.
+ */
 describe("Helpers", () => {
     test("Return true for a valid URL", () => {
         expect(isUrl("https://fakedoors.com")).toBe(true)

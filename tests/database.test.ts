@@ -2,6 +2,14 @@ import { db } from "../database/index"
 
 const data = { url: "test", databaseItem: { crawledData: ["abc", "def"], isCrawling: false } }
 
+/**
+ * Database tests.
+ * Note that we could mocks/a test db here if we didn't
+ * want to run against the actual database.
+ * Since our DB is just an in memory native JS Map,
+ * we'll test it directly.
+ */
+
 beforeEach(async () => {
     const database = await db()
     return database.crawler.upsert(data)

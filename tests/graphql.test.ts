@@ -7,6 +7,16 @@ import { db } from "../database"
 
 let Client: ApolloServerTestClient
 
+/**
+ * GraphQL "Integrations" tests
+ *
+ * Leverage the apollo-server-testing package,
+ * We can do a test that doesn't need any mocks and allows
+ * us to test our API directly. See comments in database.test.ts
+ * for how we didn't want to run against our actual database.
+ *
+ */
+
 beforeAll(() => {
     const server = new ApolloServer({ schema, context: createContext })
     Client = createTestClient(server)
@@ -103,7 +113,7 @@ describe("Sitemap", () => {
         if (!data) throw new Error("No data")
         expect(data).toHaveProperty("generateSitemap.json.hrefs")
         expect(data).toHaveProperty("generateSitemap.xml")
-        expect(data.generateSitemap.xml).toMatchSnapshot()
+        expect(data.generateSitemap.xml).toMatchSnapshot() //Using snapshots is ideal here.
         expect(data.generateSitemap.json.hrefs).toHaveLength(2)
     })
 
@@ -122,7 +132,7 @@ describe("Sitemap", () => {
         if (!data) throw new Error("No data")
         expect(data).toHaveProperty("generateSitemap.json.hrefs")
         expect(data).toHaveProperty("generateSitemap.xml")
-        expect(data.generateSitemap.xml).toMatchSnapshot()
+        expect(data.generateSitemap.xml).toMatchSnapshot() //Using snapshots is ideal here.
         expect(data.generateSitemap.json.hrefs).toHaveLength(3)
     })
 })
