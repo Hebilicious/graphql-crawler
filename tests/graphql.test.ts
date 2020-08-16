@@ -73,7 +73,7 @@ describe("Crawl", () => {
     })
 })
 
-describe("Sitemap", async () => {
+describe("Sitemap", () => {
     beforeAll(async () => {
         const database = await db()
         await database.crawler.upsert({
@@ -127,7 +127,7 @@ describe("Sitemap", async () => {
     })
 })
 
-describe("End to End", async () => {
+describe("End to End", () => {
     beforeAll(async () => {
         const { query } = Client
         await query({
@@ -137,10 +137,19 @@ describe("End to End", async () => {
                 }
             `
         })
+        await query({
+            query: gql`
+                query crawl {
+                    crawlUrl(input: { url: "https://emmanuel.style" })
+                }
+            `
+        })
     })
     test("Crawling an url correctly write to the database", async () => {
         const database = await db()
-        const exists = await database.crawler.has("https://google.com")
-        expect(exists).toBe(true)
+        const googleExists = await database.crawler.has("https://google.com")
+        const emmanuelExists = await database.crawler.has("https://emmanuel.style")
+        expect(googleExists).toBe(true)
+        expect(emmanuelExists).toBe(true)
     })
 })
