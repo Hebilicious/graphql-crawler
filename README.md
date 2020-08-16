@@ -10,18 +10,15 @@
 ### 📚 Stories
 
 1. As a user, I want to be able to start a crawl for my website, so that I would be able to generate a sitemap.
-
 2. As a user, I want to be able to limit the speed of the crawl. So that I would not take down my website.
-
 3. As a user, I want to be able to monitor my crawl using GraphQL subscriptions, what URLs it is crawling at the moment and how many he crawled total.
-
 4. As a user, I want to be able to fetch a paginated list of URLs found, to be able to generate sitemap using the API.
 
 ## 👩‍💻Technology choices
 
 **We'll leverage mostyl native JavaScript functionalities to implements this crawler.**
 
-**We'll also use the following libraries :**
+**We'll also use the following runtime libraries :**
 
 -   [Puppeteer](https://github.com/puppeteer/puppeteer) (Page rendering)
 
@@ -30,9 +27,10 @@
 
 -   [Apollo Server Fastify](https://github.com/apollographql/apollo-server/blob/main/packages/apollo-server-fastify/README.md) (GraphQL Server)
 
-    -   We're using Fastify over Express as it gives better performances 🚀 And we don't need anything from the Express ecosystem.
+    -   We're using Fastify over Express as it gives way better performances 🚀 The adoption is increasing, and the [ecosystem](https://www.fastify.io/ecosystem/) is maturing.
     -   Fastify v3 doesn't work with Apollo [yet](https://github.com/apollographql/apollo-server/pull/4356) 😥, so we're using v2
     -   We'll use the in-memory PubSub for our websocket implementation, which is fine for this PoC.
+    -   Fastify already uses Pino for logging, and out of the box it can accept a custom pino instance if needed.
 
 -   [Nexus Schema](https://github.com/graphql-nexus/schema) (GraphQL schema building)
 
@@ -48,6 +46,9 @@
 ## 🔬 How to use
 
 **It is recommended that you clone the repository and use an IDE with Typescript support (like VSCode) to review the code. Thanks to [type inference and contextual typings](https://www.typescriptlang.org/docs/handbook/type-inference.html), Typescript provides us with a lot of information.**
+
+**That's how it should looks in VSCode :**
+![image](./crawlPage.png)
 
 -   Tested with Node 14+ and yarn
 -   The `yarn nexus:generate` script needs to run to generate Typescript types and the graphQL schema. It runs by default as a postinstall script.
