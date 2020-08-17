@@ -1,3 +1,5 @@
+![GraphQL Crawler CI](https://github.com/Hebilicious/graphql-crawler/workflows/GraphQL%20Crawler%20CI/badge.svg)
+
 # DeepCrawl take-home task
 
 ## 🧾Requirements
