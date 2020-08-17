@@ -45,7 +45,7 @@
 
 ## 🔬 How to use
 
-**It is recommended that you clone the repository and use an IDE with Typescript support (like VSCode) to review the code. Thanks to [type inference and contextual typings](https://www.typescriptlang.org/docs/handbook/type-inference.html), Typescript provides us with a lot of information.**
+**It is recommended that you clone the repository and use an IDE with Typescript support (like VSCode) to review the code. Thanks to [type inference and contextual typings](https://www.typescriptlang.org/docs/handbook/type-inference.html), Typescript provides us with a lot of information. For example most of the return types are inferred and aren't specified in the JSdocs or written out. Functional Programming ❤**
 
 **That's how it should looks in VSCode :**
 ![image](./crawlPage.png)
